@@ -1,0 +1,651 @@
+Exam : 1Z0-082
+Title : Oracle Database Administration I
+
+Q1. Which two statements are true about the tools used to configure Oracle Net Services:
+A) Oracle Net Manager can be used to locally configure naming methods on a database server.
+B) Oracle Net Manager can be used to centrally configure listeners on any database server target.
+C) Enterprise Manager Cloud Control can be used to centrally configure net service names for any database server target
+D) The lsnrctl utility requires a listener.ora file to exist before it is started.
+E) The Oracle Net Configuration Assistant is only used when running the Oracle Installer.
+Q2. Which two queries execute successfully?
+A) SELECT COALESCE (100, NULL, 200) FROM DUAL;
+B) SELECT NULLIF(100, 100) FROM DUAL;
+C) SELECT NULLIF(NULL, 100) FROM DUAL;
+D) SELECT COALESCE(100, 'A') FROM DUAL;
+E) SELECT NULLIF(100, 'A') FROM DUAL;
+Q3. Which three actions are ways to apply the principle of least privilege?
+A) setting the 07_DICTIONARY_ACCESSBILITY parameter to true
+B) revoking execute privilege on UTL_SMTP, UTL_TCP, UTL_HTTP, and UTL_FILE from the PUBLIC user
+C) revoking execute privilege on UTL_SMTP, UTL_TCP, UTL_HTTP, and UTL_FILE from the SYSTEM user
+D) enabling Unified Auditing
+E) setting the REMOTE_OS_AUTHENT parameter to true
+F) using Access Control Lists (ACLs)
+Q4. The CUSTOMERS table has a CUST_LAST_NAME column of data type VARCHAR2.
+The table has two rows whose CUST_LAST_NAME values are Anderson and Ausson.
+Which query produces output for CUST_LAST_NAME containing Oder for the first row and Aus for the second?
+A) SELECT REPLACE(SUBSTR(cust_last_name, -3), 'An', 'O') from customers;
+B) SELECT REPLACE(REPLACE(cust_last_name, 'son', "), 'An', 'O') FROM customers;
+C) SELECT INITCAP(REPLACE(TRIM('son' FROM cust_last_name), 'An', 'O')) FROM customers;
+D) SELECT REPLACE(TRIM(TRAILING 'son' FROM cust_last_name), 'An', 'O') FROM customers;
+Q5. Which two statements are true about GLOBAL TEMPORARY TABLES?
+A) GLOBAL TEMPORARY TABLE rows inserted by a session are available to any other session whose user has been granted select on the table.
+B) GLOBAL TEMPORARY TABLE space allocation occurs at session start.
+C) A GLOBAL TEMPORARY TABLE's definition is available to multiple sessions.
+D) A TRUNCATE command issued in a session causes all rows in a GLOBAL TEMPORARY TABLE for the issuing session to be deleted.
+E) A DELETE command on a GLOBAL TEMPORARY TABLE cannot be rolled back.
+Q6. Which two tasks can you perform using DBCA for databases?
+A) Register a new database with an available Enterprise Manager Management server.
+B) Change the standard block size of an existing database.
+C) Configure incremental backups for a new database.
+D) Configure a nonstandard block size for a new database.
+E) Enable flashback database for an existing database.
+Q7. Examine the data in the CUST_NAME column of the CUSTOMERS table:
+CUST_NAME
+———————————-
+Renske Ladwig
+Jason Mallin
+Samuel McCain
+Allan MCEwen
+Irene Mikkilineni
+Julia Nayer
+6 rows selected.
+You want to display the CUST_NAME values where the last name starts with Mc or MC
+Which two WHRE clauses give the required result?
+A) WHERE SUBSTR(cust_name, INSTR(cust_name, ' ') + 1 ) LIKE 'Mc%'
+B) WHERE SUBSTR(cust_name, INSTR(cust_name, ' ') + 1 ) LIKE 'Mc%' OR 'MC%'
+C) WHERE INITCAP(SUBSTR(cust_name, INSTR(cust_name, ' ') + 1)) LIKE 'Mc%'
+D) WHERE INITCAP(SUBSTR(cust_name, INSTR(cust_name, ' ') + 1)) IN ('MC%', 'Mc%')
+E) WHERE UPPER(SUBSTR(cust_name, INSTR(cust_name, ' ') + 1)) LIKE UPPER('MC%')
+Q8. The EMPLOYEES table contains columns EMP_ID of data type NUMBER and HIRE_DATE of data type DATE)
+You want to display the date of the first Monday after the completion of six months since hiring.
+The NLS_TERRITORY parameter is set to AMERICA in the session and, therefore, Sunday is the first day on the week.
+Which query can be used?
+A) SELECT emp_id, ADD_MONTHS(hire_date, 6), NEXT_DAY('MONDAY') FROM employees;
+B) SELECT emp_id, NEXT_DAY(ADD_MONTHS(hire_date, 6), 'MONDAY') FROM employees;
+C) SELECT emp_id, NEXT_DAY(MONTHS_BETWEEN(hire_date, SYSDATE), 6) FROM employees;
+D) SELECT emp_id, NEXT_DAY(ADD_MONTHS(hire_date, 6), 1) FROM employees;
+Q9. You want to apply the principle of Least Privilege in all your live databases.
+One of your requirements is to revoke unnecessary privileges from all users who have them using Privilege Analysis.
+Which two types of analyses can be done using the DBMS_PRIVILEGE_CAPTURE package? (Choose two.)
+A) analysis of privileges that a user has on their own schema objects
+B) analysis of privileges that a user has on other schema's objects
+C) analysis of privileges granted directly to a role that are then used by a user who has been granted that role
+D) analysis of all privileges used by SYS user.
+E) analysis of privileges granted indirectly to a role that are then used by a user who has been granted that role
+Q10. Which two statements are true about undo segments and the use of undo by transactions in an Oracle database instance? (Choose two.)
+A) Undo segments can wrap around to the first extent when a transaction fills the last extend of the undo segment
+B) Undo segments can extend when a transaction fills the last extent of the undo segment
+C) A single transaction may use multiple undo segments simultaneously
+D) Undo segments can be stored in the SYSTEM tablespace
+E) Undo segments can be stored in the SYSAUX tablespace
+Q11. Which two statements are true about Database Instances and Real Application Clusters (RAC)?
+A) A RAC database must have two or more instances.
+B) A RAC database can have Instances on separate servers.
+C) Two RAC databases can share their instances.
+D) A RAC database can have one instance
+E) A RAC database must have three or more instances.
+Q12. Examine this SQL statement:
+SELECT cust_id, cust_last_name "Last Name" FROM customers
+WHERE country_id = 10 UNION
+SELECT cust_id CUST_NO, cust_last_name FROM customers
+WHERE country_id = 30
+Identify three ORDER BY clauses, any one of which can complete the query successfully. (Choose three.)
+A) ORDER BY "Last Name"
+B) ORDER BY 2, 1
+C) ORDER BY 2, cust_id
+D) ORDER BY CUST_NO
+E) ORDER BY "CUST_NO"
+Q13. Examine this description of the TRANSACTIONS table:
+ 
+Which two SQL statements execute successfully? (Choose two.)
+A) SELECT customer_id AS "CUSTOMER-ID", transaction_date AS DATE, amount + 100 "DUES" FROM transactions;
+B) SELECT customer_id AS "CUSTOMER-ID", transaction_date AS "DATE", amount + 100 DUES FROM transactions;
+C) SELECT customer_id AS CUSTOMER-ID, transaction_date AS TRANS_DATE, amount + 100 "DUES AMOUNT" FROM transactions;
+D) SELECT customer_id CUSTID, transaction_date TRANS_DATE, amount + 100 DUES FROM transactions;
+E) SELECT customer_id AS 'CUSTOMER-ID', transaction_date AS DATE, amount + 100 'DUES' FROM transactions;
+Q14. Examine the description of the PRODUCTS table
+ 
+Which three queries use valid expressions?
+A) SELECT product_id, unit_price || 5 "Discount", unit_price + surcharge - discount FROM products;
+B) SELECT product_id, unit_price, unit_price + surcharge FROM products;
+C) SELECT product_id, unit_price, 5 "Discount", unit_price + surcharge - discount FROM products;
+D) SELECT product_id, expiry_date * 2 FROM products;
+E) SELECT product_id, (unit_price * 0.15/ (4.75 + 552.25)) FROM products;
+F) SELECT product_id, (expiry_date - delivery_date) * 2 FROM products;
+Q15. Which three statements are true about the naming methods and their features supported by Oracle database used to resolve connection information?
+A) Local naming can be used if Connect-Time Failover is required.
+B) A client can connect to an Oracle database Instance even if no client side network admin has been configured.
+C) Directory Naming can be used if Connect-Time Failover is required.
+D) Easy Connect supports TCP/IP and SSL
+E) Local Naming requires setting the TNS_ADMIN environment variable on the client side.
+F) Directory Naming requires setting the TNS_ADMIN environment variable on the client side.
+Q16. The STORES table has a column START_DATE of data type DATE, containing the date the row was inserted.
+You only want to display details of rows where START_DATE is within the last 25 months.
+Which WHERE clause can be used?
+A) WHERE TO_NUMBER(start_date - SYSDATE) <= 25
+B) WHERE ADD_MONTHS(start_date, 25) <= SYSDATE
+C) WHERE MONTHS_BETWEEN(start_date, SYSDATE) <= 25
+D) WHERE MONTHS_BETWEEN(SYSDATE, start_date) <= 25
+Q17. Which two statements are true about the PMON background process? (Choose two.)
+A) It registers database services with all local and remote listeners known to the database instance
+B) It frees resources held by abnormally terminated processes
+C) It records checkpoint information in the control file
+D) It frees unused temporary segments
+E) It rolls back transaction when a process fails
+Q18. Table ORDER_ITEMS contains columns ORDER_ID, UNIT_PRICE and QUANTITY, of data type NUMBER.
+Examine these SQL statements:Statement 1:
+SELECT MAX(unit_price * quantity) "Maximum Order" FROM order_items;
+Statement 2:
+SELECT MAX(unit_price * quantity) "Maximum Order" FROM order_items
+GROUP BY order_id;
+Which two statements are true?
+A) Statement 1 returns only one row of output.
+B) Statement 2 returns only one row of output.
+C) Both statements will return NULL if either UNIT_PRICE or QUANTITY contains NULL.
+D) Both the statements give the same output.
+E) Statement 2 may return multiple rows of output.
+Q19. Which two are true about transactions in the Oracle Database?
+A) A session can see uncommitted updates made by the same user in a different session.
+B) A DDL statement issued by a session with an uncommitted transaction automatically commits that transaction.
+C) An uncommitted transaction is automatically committed when the user exits SQL*Plus.
+D) DDL statements automatically commit only data dictionary updates caused by executing the DDL.
+E) DML statements always start new transactions.
+Q20. Examine these SQL statements which execute successfully:
+ 
+Which two statements are true after execution?
+A) The primary key constraint will be enabled and IMMEDIATE.
+B) The foreign key constraint will be disabled.
+C) The foreign key constraint will be enabled and DEFERRED
+D) The foreign key constraint will be enabled and IMMEDIATE.
+E) The primary key constraint will be enabled and DEFERRED.
+Q21. Which two statements are true about time zones, date data types, and timestamp data type in an Oracle database?
+A) The CURRENT_TIMESTAMP function returns data without time zone information
+B) A TIMESTAMP WITH LOCAL TIMEZONE data type column is stored in the database using the time zone of the session that inserted the row
+C) The DATE datatype returns data with time zone information
+D) The DBTIMEZONE function can return an offset from Universal Coordinated Time (UTC)
+E) The SESSIONTIMEZONE function can return an offset from Universal Coordinated Time (UTC)
+Q22. Examine this command:
+CREATE UNDO TABLESPACE undotbs01
+DATAFILE 'undotbs_01.dbf' SIZE 100M
+AUTOEXTEND ON;
+Which two actions must you take to ensure UNDOTBS01 is used as the default UNDO tablespace? (Choose two.)
+A) Add the SEGMENT SPACE MANAGEMENT AUTO clause
+B) Set UNDO_TABLESPACE to UNDOTBS01
+C) Add the NOLOGGING clause
+D) Make certain that the database operates in automatic undo management mode
+E) Add the ONLINE clause
+Q23. Examine the description of the MEMBERS table:
+ 
+A) WHERE city = '%AN%'
+B) Order BY last_name DESC, city ASC
+C) ORDER BY 1, LNAME DESC
+D) ORDER BY 1, 2
+E) WHERE city IN ('%AN%')
+F) WHERE city LIKE '%AN%'
+Q24. Which two statements are true about INTERVAL data types?
+A) INTERVAL DAY TO SECOND columns support fractions of seconds.
+B) INTERVAL YEAR TO MONTH columns only support monthly intervals within a range of years.
+C) INTERVAL YEAR TO MONTH columns only support monthly intervals within a single year.
+D) INTERVAL YEAR TO MONTH columns support yearly intervals.
+E) The YEAR field in an INTERVAL YEAR TO MONTH column must be a positive value.
+F) The value in an INTERVAL DAY TO SECOND column can be copied into an INTERVAL YEAR TO MONTH column.
+Q25. Which three statements are true about the DESCRIBE command? (Choose three.)
+A) It displays the PRIMARY KEY constraint for any column or columns that have that constraint
+B) It can be used from SQL Developer
+C) It displays the NOT NULL constraint for any columns that have that constraint
+D) It can be used to display the structure of an existing view
+E) It displays all constraints that are defined for each column
+F) It can be used only from SQL*Plus
+Q26. Which three statements are true about sequences in a single instance Oracle database? (Choose three.)
+A) A sequence can issue duplicate values
+B) A sequence's unallocated cached value are lost if the instance shuts down
+C) Sequences can always have gaps
+D) Two or more tables cannot have keys generated from the same sequence
+E) A sequence can only be dropped by a DBA
+F) A sequence number that was allocated can be rolled back if a transaction fails
+Q27. Examine the description of the EMPLOYEES table:
+ 
+Which query is valid?
+A) SELECT dept_id, AVG(MAX(salary)) FROM employees GROUP BY dept_id;
+B) SELECT dept_id, join_date, SUM(salary) FROM employees GROUP BY dept_id;
+C) SELECT dept_id, join_date, SUM(salary) FROM employees GROUP BY dept_id, join_date;
+D) SELECT dept_id, MAX(AVG(salary)) FROM employees GROUP BY dept_id;
+Q28. You need to calculate the number of days from 1st January 2019 until today. Dates are stored in the default format of DD-MON-RR.
+Which two queries give the required output? (Choose two.)
+A) SELECT TO_CHAR(SYSDATE, 'DD-MON-YYYY') - '01-JAN-2019′ FROM DUAL;
+B) SELECT ROUND(SYSDATE - '01-JAN-2019′) FROM DUAL;
+C) SELECT ROUND(SYSDATE - TO_DATE('01/JANUARY/2019′)) FROM DUAL;
+D) SELECT TO_DATE (SYSDATE, 'DD/MONTH/YYYY') - '01/JANUARY/2019′ FROM DUAL;
+E) SELECT SYSDATE - TO_DATE ('01-JAN-2019′) FROM DUAL;
+Q29. Which two statements are true about the Oracle Data Dictionary? (Choose two.)
+A) Data dictionary base tables can be queried directly
+B) All data dictionary view join base tables to dynamic performance views.
+C) It is owned by the SYSTEM user
+D) It is owned by the SYS user
+E) Data Dictionary Views are always created with queries that join two or more base tables.
+Q30. Which three statements are true about connection strings and service names used to connect to an Oracle database instance?
+A) A connection string must include the SID of a database instance.
+B) A connection string including a service name must be defined in the tnsnames.ora file.
+C) Different connection strings in the same tnsnames.ora file can contain the same service, host and port parameters.
+D) A single database instance can support connections for multiple service names.
+E) A single connection string can refer to multiple database instances.
+F) A service name is created by a listener.
+Q31. Which two statements are true about table data storage in an Oracle database?
+A) Multiple row pieces from the same row must be stored in different database blocks.
+B) Index block free space is always contiguous in the middle of the block.
+C) Data block free space is always contiguous in the middle of the block.
+D) A table row can be chained across several database blocks.
+E) Multiple row pieces from the same row may be stored in different database blocks.
+Q32. The SALES_Q1 and USERS tablespaces exist in one of your databases and TEMP is a temporary tablespace.
+  Segment creation is not deferred. You execute this command:
+Which three statements must be true so that the SALES user can create tables in SALES_Q1? (Choose three.)
+A) The sales user must have a quota on the TEMP tablespace
+B) The sales user must have a quota on the SALES_Q1 tablespace to hold the initial extends of all tables they plan to create in their schema
+C) The sales user must have been granted the CREATE SESSION privilege
+D) The sales user must have their quota on the users tablespace removed
+E) The sales user must have a quota on the SALES_Q1 tablespace to hold all the rows to be inserted into any table in their schema
+F) The sales user must have been granted the CREATE TABLE privilege
+Q33. Examine these commands:
+ 
+Which two statements are true about the sqlldr execution?
+A) It overwrites the data for Alan and adds data for Curl and Bob
+B) It appends data from EMP.DAT to EMP.
+C) It generates a sql script that it uses to load data from EMP.DAT to EMP
+D) It generates a log that contains control file entries, which can be used with normal SQL*Loader operations.
+E) It overwrites all data in EMP with data from EMP.DAT.
+Q34. Which two statements are true about the DUAL table? (Choose two.)
+A) It can be accessed only by the SYS user
+B) It consists of a single row and single column of VARCHAR2 data type
+C) It can display multiple rows but only a single column
+D) It can be used to display only constants or pseudo columns
+E) It can be accessed by any user who has the SELECT privilege in any schema
+F) It can display multiple rows and columns
+Q35. Examine the description of the PROMOTIONS table:
+ 
+A) SELECT promo_cost, promo_category FROM promotions ORDER BY by 1;
+B) SELECT DISTINCT promo_cost || ' in ' || DISTINCT promo_category FROM promotions ORDER BY 1;
+C) SELECT DISTINCT promo_category || ' has ' || promo_cost AS COSTS FROM promotions ORDER BY 1;
+D) SELECT promo_category, DISTINCT promo_cost FROM promotions ORDER BY 2;
+E) SELECT DISTINCT promo_category, promo_cost FROM promotions ORDER BY 1;
+Q36. Which two statements are true about Oracle synonyms?
+A) A synonym has an object number
+B) Any user can create a PUBLIC synonym
+C) A synonym can be created on an object in a package
+D) All private synonym names must be unique in the database
+E) A synonym can have a synonym.
+Q37. Which are two of the account management capabilities that can be configured using Oracle profiles? (Choose two.)
+A) the maximum amount of CPU time allowed for a user's sessions before their account is locked
+B) the ability to prevent a password from ever being reused
+C) the number of days for which an account may be logged in to one or more sessions before it is locked.
+F) the maximum number of sessions permitted for a user before the password must be changed.
+E) the number of days for which an account may be inactive before it is locked.
+Q38.l Which two are benefits of external tables?
+A) They can be queried while the database is in the MOUNT state like dynamic performance views.
+B) They support DELETE which transparently deletes records in the file system as if they were table rows.
+C) They can be queried, transformed, and joined with other tables without having to load the data first.
+D) They support UPDATES which transparently updates records in the file system as if they were table rows.
+E) The results of a complex join or aggregating function or both can be unloaded to a file for transportation to another database.
+Q39. Which two statements are true concerning logical and physical database structure:
+A) A segment can span multiple data files in some tablespaces.
+B) All tablespaces may have one or more data files.
+C) A segment might have only one extent.
+D) A segment's blocks can be of different sizes.
+E) Segments can span multiple tablespaces.
+Q40. Which four statements are true regarding primary and foreign key constraints and the effect they can have on table data?
+A) A table can have only one primary key but multiple foreign keys
+B) A table can have only one primary key and one foreign key
+C) The foreign key columns and parent table primary key columns must have the same names
+D) It is possible for child rows that have a foreign key to remain in the child table at the time the parent row is deleted
+E) It is possible for child rows that have a foreign key to be deleted automatically from the child table at the time the parent row is deleted.
+F) Only the primary key can be defined at the column and table level
+G) Primary key and foreign key constraints can be defined at both the column and table level
+Q41. Which two statements are true about Enterprise Manager Database Express?
+A) It is available only when the database is open
+B) It can be used to perform database recovery when database is mounted
+C) The same port number can be used for Database Express configurations for databases on different hosts
+D) It can be used to switch a database into ARCHIVELOGMODE
+E) The same port number can be used for multiple Database Express configurations for multiple databases on the same host
+F) It can be used to perform database recovery when database is open
+Q42. In the PROMOTIONS table, the PROMO_BEGIN_DATE column is of data type DATE and the default date format is DD-MON-RR.
+Which two statements are true about expressions using PROMO_BEGIN_DATE contained in a query?
+A) TO_NUMBER(PROMO_BEGIN_DATE) - 5 will return a number.
+B) PROMO_BEGIN_DATE - SYSDATE will return a number.
+C) PROMO_BEGIN_DATE - 5 will return a date.
+D) PROMO_BEGIN_DATE - SYSDATE will return an error.
+E) TO_DATE(PROMO_BEGIN_DATE * 5) will return a date.
+Q43. Which is the default column or columns for sorting output from compound queries using SET operators such as INTERSECT in a SQL statement?
+A) the first column in the last SELECT of the compound query.
+B) the first column in the first SELECT of the compound query.
+C) the first VARCHAR2 column in the first SELECT of the compound query
+D) the first NUMBER OF VARCHAR2 column in the last SELECT of the compound query
+E) the first NUMBER column in the first SELECT of the compound query.
+Q44. You execute this command:
+ 
+A) You can reattach to it but not monitor it.
+B) It terminates.
+C) You can reattach to it and monitor it
+D) It continues to run in the background
+E) It is paused and can be resumed.
+Q45. Examine the description of the PRODUCT_DETAILS table:
+ 
+A) PRODUCT_PRICE can be used in an arithmetic expression even if it has no value stored in it.
+B) PRODUCT_NAME cannot contain duplicate values.
+C) PRODUCT_ID can be assigned the PRIMARY KEY constraint.
+D) PRODUCT_PRICE contains the value zero by default if no value is assigned to it.
+E) EXPIRY_DATE contains the SYSDATE by default if no date is assigned to it.
+F) EXPIRY_DATE cannot be used in arithmetic expressions.
+Q46. In one of your databases, you create a user, HR, and then execute this command:
+GRANT CREATE SESSION TO hr WITH ADMIN OPTION;
+Which three actions can HR perform?
+A) Revoke the CREATE SESSION privilege from other users
+B) Revoke the CREATE SESSION privilege from user HR
+C) Log in to the database instance
+D) Grant the CREATE SESSION privilege with ADMIN OPTION to other users
+E) Execute DDL statements in the HR schema
+F) Execute DML statements in the HR schema
+Q47. Examine the description of the SALES1 table:
+ 
+A) UNION ALL
+B) INTERSECT
+C) SUBTRACT
+D) UNION
+E) MINUS
+Q48. Which two statements are true about the Oracle join and ANSI join syntax?
+A) The Oracle join syntax lacks the ability to do outer joins.
+B) The Oracle join syntax perform better than the SQL:1999 compliant ANSI join syntax.
+C) The Oracle join syntax performs less well than the SQL:1999 compliant ANSI join syntax.
+D) The Oracle join syntax supports creation of a Catesian product of two tables.
+E) The SQL:1999 compliant ANSI join syntax supports creation of a Cartesian prodcut of two tables.
+Q49. What is true about non-equijoin statement performance?
+A) The BETWEEN condition used with an non-equijoin always performs better than when using the >= and <= conditions.
+B) The BETWEEN condition used with an non-equijoin sometimes performs better than using the >= and <= conditions.
+C) The join syntax used makes no difference to performance.
+D) The Oracle join syntax performs better than the SQL:1999 compliant ANSI join syntax.
+E) The Oracle join syntax performs less well than the SQL:1999 compliant ANSI join syntax.
+Q50. Which three statements are true regarding single row subqueries?
+A) A SQL statement may have multiple single row subquery blocks.
+B) They must return a row to prevent errors in the SQL statement.
+C) They can be used in the HAVING clause.
+D) They must be placed on the right side of the comparison operator or condition.
+E) They must be placed on the left side of the comparison operator or condition
+F) They can be used in the WHERE clause.
+Q51. The ORCL database has RESUMABLE_TIMEOUT = 7200 and DEFERED_SEGMENT_CREATION= FALSE
+User U1 has a 1 MB quota in tablespace DATA. U1 executes this command:
+SQL> CREATE TABLE t1 AS
+(SELECT object_name, sharing, created FROM dba_objects);
+U1 complains that the command is taking too long to execute. In the alert log, the database administrator (DBA) finds this:
+2017-03-06T12:15:17.183438+05:30
+statement in resumable session 'User U1(136), Session 1, Instance 1' was suspended due to ORA-01536: space quota exceeded for tablespace 'DATA'
+Which are three actions any one of which the DBA could take to resume the session? (Choose three.)
+A) Add a data file to DATA
+B) Drop other U1 objects in DATA
+C) Increase U1's quota sufficiently in DATA
+D) Set DEFERRED_SEGMENT_CREATION to TRUE
+E) Grant UNLIMITED TABLESPACE to U1
+F) Set AUTOEXTEND ON for data files in DATA
+Q52. Which three statements are true about the Automatic Diagnostic Repository (ADR)?
+A) It is only used for Oracle Database diagnostic Information.
+B) It is held inside an Oracle database schema.
+C) It is a file-based repository held outside any database.
+D) It can be used for problem diagnosis of a database when that database's instance is down.
+E) The ADR base is specified in the DIAGNOSTIC_DEST database parameter.
+Q53. Examine this command and some partial output:
+ 
+Why does the DB01.abc.com service show unknown status?
+A) The service DB01.abc.com is dynamically registered
+B) The LOCAL_LISTENER database parameter is not set to a service name that refers to LISTENER_1
+C) The service DB01.abc.com is statically registered
+D) The listener is not listening on the default port 1521
+E) The SID_LIST_LISTENER section is not contained in the LISTENER.ORA file
+Q54. Which three are types of segments in a Oracle database?
+A) Sequences
+B) views
+C) tables
+D) clusters
+E) Undo
+F) stored procedures.
+Q55. Which statement is true about database links?
+A) Private database link creation requires the same user to exist in both the local and the remote databases.
+B) A database link can be created only between two Oracle databases.
+C) A public database link can be created only by SYS.
+D) A public database link can be used by a user connected to the local database instance to connect to any schema in the remote database instance.
+E) A database link created in a database allows a connection from that database's instance to the target database's instance, but not vice versa.
+Q56. Which two statements are true about views used for viewing tablespace and datafile information?
+A) Tablespace free space can be viewed in V$TABLESPACE
+B) V$TABLESPACE displays information that is contained in the controlfile about tablespaces
+C) V$TABLESPACE displays information about tablespaces contained in the data dictionary
+D) Tablespace free space can be viewed in DBA_TABLESPACES
+E) A datafile can be renamed when the database is in MOUNT state and the new file name is displayed when querying DBA_DATA_FILES after the database is opened
+Q57. View the Exhibit and examine the description of the tables.
+ 
+ 
+A) The statement will fail if a row already exists in the SALES table for product 23.
+B) The SALES table has five foreign keys.
+C) The statement will execute successfully and a new row will be inserted into the SALES table.
+D) A product can have a different unit price at different times.
+E) The statement will fail because a subquery may not be contained in a VALUES clause.
+F) A customer can exist in many countries.
+Q58. Which two Oracle database space management features require the use of locally managed tablespaces?
+A) Online segment shrink
+B) Automatic data file extension (AUTOEXTEND)
+C) Oracle Managed Files (OMF)
+D) Free space management with bitmaps.
+E) Server-generated tablespace space alerts.
+Q59. You must create a tablespace of non-standard block size in a new file system and plan to use the command:
+ 
+A) DB_32K_CACHE_SIZE must be set to a value that can be accommodated in the SGA.
+B) DB_CACHE_SIZE must be set to a size that is smaller than DB_32K_CACHE_SIZE.
+C) DB_32K_CACHE_SIZE should be set to a value greater than DB_CACHE_SIZE.
+D) DB_32K_CACHE_SIZE must be less than DB_CACHE_SIZE.
+E) The /u02 file system must have at least 100g space for the datafile.
+F) The operating system must use a 32k block size.
+Q60. In your data canter, Oracle Managed Files (OMF) is used for all databases.
+All tablespaces are smallfile tablespaces.
+SALES_Q1 is a permanent user-defined tablespace in the SALES database
+Examine this command which is about to be issued by a DBA logged in to the SALES database:
+ALTER TABLESPACE sales_q1 ADD DATAFILE;
+Which are two actions, either one of which you could take to ensure that the command executes successfully?
+A) Ensure that DB_RECOVERY_FILE_DEST and DB_CREATE_FILE_DEST each specify with at least 50 Mb of available space.
+B) Specify a path in the DATAFILE clause of the command specifying a location with at least 100M of available space.
+C) Ensure that DB_CREATE_FILE_DEST specifies a location with at least 100 Mb of available space.
+D) Add the AUTOEXTEND ON clause with NEXT set to 100M.
+E) Ensure that DB_RECOVERY_FILE_DEST and DB_CREATE_FILE_DEST each specify locations with at least 50 Mb of available space
+Q61. Which two statements are true about views?
+A) Views can be updated without the need to re-grant privileges on the view
+B) Views can be indexed
+C) A view must only refer to tables in its defining query
+D) The WITH CHECK clause prevents certain rows from being updated or inserted in the underlying table through the view
+E) The WITH CHECK clause prevents certain rows from being displayed when querying the view
+Q62. Which three statements are true about inner and outer joins?
+A) Outer joins can only be used between two tables per query
+B) A full outer join returns matched and unmatched rows
+C) A full outer join must use Oracle syntax
+D) A left or right outer join returns only unmatched rows
+E) Outer joins can be used when there are multiple join conditions on two tables
+F) An inner join returns matched rows
+Q63. The SALES table has columns PROD_ID and QUANTITY_SOLD of data type NfUMBER
+Which two queries execute successfully?
+A) SELECT prod_id FROM sales WHERE quantity_sold > 55000 and COUNT(*) > 10 GROUP BY prod_id HAVING COUNT(*) >10;
+B) SELECT prod_id FROM sales WHERE quantity_sold > 55000 and COUNT(*) > 10 GROUP BY COUNT(*) >10;
+C) SELECT prod_id FROM sales WHERE quantity_sold > 55000 GROUP BY prod_id HAVING COUNT(*) >10;
+D) SELECT COUNT(prod_id) FROM sales GROUP BY prod_id WHERE quantity_sold > 55000;
+E) SELECT COUNT(prod_id) FROM sales WHERE quantity_sold > 55000 GROUP BY prod_id;
+Q64. Examine the description of the BOOKS_TRANSACTIONS table:
+Name Null? Type
+=========================================== =========== ==========================
+TRANSACTION_ID NOT NULL VARCHAR2(6)
+TRANSACTION_TYPE VARCHAR2(3)
+BORROWED_DATE DATE
+BOOK_ID VARCHAR2(6)
+MEMBER_ID VARCHAR2(6)
+Examine this partial SQL statement:
+SELECT * FROM books_transactions
+Which two WHERE conditions give the same result?
+A) WHERE borrowed_date = SYSDATE AND (transaction_type = 'RM' AND member_id = 'A101' OR member_id = 'A102');
+B) WHERE borrowed_date = SYSDATE AND (transaction_type = 'RM' AND (member_id = 'A101' OR member_id = 'A102'));
+C) WHERE borrowed_date = SYSDATE AND (transaction_type = 'RM' OR member_id IN ('A101','A102'));
+D) WHERE (borrowed_date = SYSDATE AND transaction_type = 'RM') OR member_id IN ('A101','A102');
+E) WHERE borrowed_date = SYSDATE AND transaction_type = 'RM' OR member_id IN ('A101','A102');
+Q65. Which two statements are true about the configuration and use of UNDO_RETENTION with no GUATANTEED RETENTION?
+A) UNDO_RETENTION specifies for how long Oracle attempts to keep expired and unexpired UNDO.
+B) UNDO_RETENTION specifies how long all types of UNDO are retained.
+C) Unexpired UNDO is always retained.
+D) Active UNDO is always retained.
+E) UNDO_RETENTION specifies for how long Oracle attempts to keep unexpired UNDO.
+Q66. Which two statements are true regarding indexes?
+A) An update to a table can result in no updates to any of the table's indexes
+B) An update to a table can result in updates to any or all of the table's indexes
+C) A non-unique index can be altered to be unique
+D) A table belonging to one user cannot have an index that belongs to a different user
+E) The RECYCLE BIN never contains indexes
+Q67. Your database instance is started with an SPFILE
+A PFILE is also available
+You execute this command:
+ALTER SYSTEM SET DB_CACHE_SIZE=100K;
+Where is the value changed?
+A) Only in memory
+B) In the SPFILE and PFILE
+C) Only in the SPFILE
+D) In the SPFILE and in memory
+E) In the SPFILE, PFILE, and memory
+Q68. Which two statements are true about the SET VERIFY ON command?
+A) It can be used only in SQL*Plus
+B) It displays values for variables used only in the WHERE clause of a query
+C) It can be used in SQL Developer and SQL*Plus
+D) It displays values for variables created by the DEFINE command
+E) It displays values for variables prefixed with &&
+Q69. Examine this command:
+ALTER DATABSE
+MOVE DATAFILE '/u01/sales01.dbf'
+TO '/u02/sales02.dbf';
+Which two statements are true?
+A) DML may be performed on tables with one or more extents in this data file during the execution of this command
+B) Compressed objects in SALES01.DBF will be uncompressed in SALES02.DBF after the move
+C) It overwrites any existing file with the name SALES02.DBF in /u02 by default
+D) The "TO" clause containing the new file name must be specified even if Oracle Managed Files (OMF) is used
+E) Tables with one or more extents in this data file may be queried during the execution of this command
+Q70. Which two statements are true about a SQL statement using SET operators such as UNION?
+A) The data type group of each column returned by the second query must match the data type group of the corresponding column returned by the first query.
+B) The number, but not names, of columns must be identical for all SELECT statements in the query.
+C) The data type of each column returned by the second query must exactly match the data type of the corresponding column returned by the first query.
+D) The names and number of columns must be identical for all SELECT statements in the query.
+E) The data type of each column returned by the second query must be automatically converted to the data type of the corresponding column returned by the first query.
+Q.71 Which three statements are true about a self join?
+A) The ON clause must be used
+B) The query must use two different aliases for the table
+C) It must be an equijoin
+D) It must be an inner join
+E) The ON clause can be used
+F) It can be an outer join
+Q72. Which Three activities are recorded in the database alert log?
+A) Data Definition Language (DDL) statements
+B) non-default database parameters
+C) block corruption errors
+D) deadlock errors
+E) session logins and logouts
+Q73. Which two statements are true about space-saving features in an Oracle Database?
+A) Private Temporary Tables (PTTs) when used, are always dropped at the next COMMIT statement
+B) An index that is altered to be UNUSABLE will retain its segment
+C) An index created with the UNUSABLE attribute has no segment
+D) Private Temporary Tables (PTTs) store metadata in memory only
+E) A table that is truncated will always have all of its extents removed
+Q74. Which compression method is recommended for Direct-Path Insert operations
+A) ROW STORE COMPRESS ADVANCED
+B) COLUMN STORE COMPRESS ADVANCED
+C) ROW STORE COMPRESS BASIC
+D) COLUMN STORE COMPRESS BASIC
+Q75. Which two statements are true about substitution variables?
+A) A substitution variable prefixed with & always prompts only once for a value in a session
+B) A substitution variable can be used only in a SELECT statement
+C) A substitution variable used to prompt for a column name must be enclosed in single quotation marks
+D) A substitution variable can be used with any clause in a SELECT statement
+E) A substitution variable prefixed with && prompts only once for a value in a session unless it is set to undefined in the session
+F) A substitution variable used to prompt for a column name must be enclosed in double quotation marks
+Q76. Examine this command:
+SQL> ALTER TABLE ORDERS SHRINK SPACE COMPACT
+Which two statements are true?
+A) Dependent indexes become UNUSABLE
+B) The high-water mark (HWM) of ORDERS is adjusted
+C) The SHRINK operation causes rows to be moved to empty space starting toward the end of the ORDERS segment
+D) The SHRINK operation causes rows to be moved to empty space starting from the beginning of the ORDERS segment
+E) Queries and DML statements are allowed on ORDERS while the SHRINK is executing
+F) Only queries are allowed on ORDERS while the SHRINK is executing
+Q77. Which statement is true about the INTERSECT operator used in compound queries?
+A) Multiple INTERSECT operators are not possible in the same SQL statement
+B) It processes NULLs in the selected columns
+C) INTERSECT is of lower precedence than UNION or UNION ALL
+D) It ignores NULLs
+Q78. Examine the description of the EMPLOYEES table:
+Name Null? Type
+============================ ========== =======================
+EMP_ID NOT NULL NUMBER
+EMP_NAME VARCHAR2(10)
+DEPT_ID NUMBER(2)
+SALARY NUMBER(8,2)
+JOIN_DATE DATE
+NLS_DATE_FORMAT is set to DD-MON-YY
+Which query requires explicit data type conversion?
+A) SELECT SUBSTR(join_date, 1, 2) - 10 FROM employees;
+B) SELECT salary + '120.50' FROM employees;
+C) SELECT join_date || ' ' || salary FROM employees;
+D) SELECT join_date + '20' FROM employees;
+E) SELECT join_date FROM employees WHERE join_date > '10-02-2018';
+Q79. Which two statements are true about single row functions?
+A) MOD : returns the remainder of a division operation
+B) FLOOR : returns the smallest integer greater than or equal to a specified number
+C) TRUNC : can be used only with NUMBER values
+D) CONCAT : can be used to combine any number of values
+E) CEIL : can be used for positive and negative numbers
+Q80. Which three statements are true about Deferred Segment Creation in Oracle databases?
+A) Indexes inherit the DEFERRED or IMMEDIATE segment creation attribute from their parent table
+B) Sessions may dynamically switch back and forth from DEFERRED to IMMEDIATE segment creation
+C) It is the default behavior for tables and indexes
+D) It is supported for Index Organized Tables (IOTs) contained in locally managed tablespaces
+E) It is supported for SYS-owned tables contained in locally managed tablespaces
+Q81. Which two statements are true about User Authentication in an Oracle Database?
+A) Password File authentication must be used for system-privileged administrative users
+B) Password File authentication is supported for any type of database user
+C) Operation System authentication may be used for system-privileged administrative users
+D) Password authentication must be used for system-privileged administrative users
+E) REMOTE_LOGIN_PASSWORDFILE must be set to exclusive to permit password changes for system-privileged administrative users
+Q82. You start your database instance in NOMOUNT state
+Which two actions are performed?
+A) Memory is allocated for the SGA
+B) The consistency of the database is checked
+C) All required background processes are started
+D) SYS can access the database
+E) The control files are opened
+Q83. You currently have an active transaction in your session and have been granted SELECT access to V$TRANSACTION.
+Executing:
+SELECT xid, status FROM v$transaction;
+In your session returns:
+XID STATUS
+================= ===============
+0A0007000A070000 ACTIVE
+In which three situations will re-executing this query still return a row but with a different XID, indicating a new transaction as started?
+A) After successfully executing a CREATE TABLE AS SELECT statement followed by a SELECT FOR UPDATE statement
+B) After successfully executing a DML statement following a failed DML statement
+C) After successfully executing a CREATE TABLE statement followed by a CREATE INDEX statement
+D) After successfully executing a COMMIT or ROLLBACK followed by a SELECT statement
+E) After successfully executing a TRUNCATE statement followed by a DML statement
+F) After successfully executing a COMMIT or ROLLBACK followed by a DML statement
+Q84. Which two statements are true regarding Oracle database space management within blocks managed by Automatic Segment Space Management (ASSM)?
+A) PCTFREE defaults to 10% for all blocks in all segments for all compression methods
+B) Update operations always relocate rows into blocks with free space appropriate to the length of the row being updated
+C) ASSM assigns blocks to one of four fullness categories based on what percentage of the block is allocated for rows
+D) The first block with enough free space to accommodate a row being inserted will always be used for that row
+E) Insert operations always insert new rows into blocks with free space appropriate to the length of the row being inserted
+Q85. Which three statements are true about using SQL*Plus?
+A) It can run Recovery Manager (RMAN) commands
+B) It has both command-line and graphical user interfaces (GUI)
+C) It can run scripts passed to it by a shell script
+D) It can run scripts entered at the SQL prompt
+E) It has its own commands that are separate from any SQL statements
+F) It must be downloaded from the Oracle Technology Network (OTN)
+Q86. Which two statements are true about UNDO and REDO?
+A) The generation of UNDO generates REDO
+B) DML modifies Oracle database objects and only generates UNDO
+C) The generation of REDO generates UNDO
+D) DML modifies Oracle database objects and only generates REDO
+E) DML modifies Oracle database objects and generates UNDO and REDO
+
